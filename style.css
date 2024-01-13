@@ -137,9 +137,33 @@ button[disabled] {
 }
 
 form {
-display: grid;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+
+  & p {
+    grid-column: 1 / span 2;
+  }
+
 }
 
 input {
+  justify-self: center;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+#submit {
+  margin-top: 20px;
+  width: 10%;
   float: right;
+  grid-column: 1 / span 2;
+}
+
+label {
+  justify-self: end;
+};
+
+section {
+    display: block;
+    position: relative;
 }
