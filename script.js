@@ -1,23 +1,3 @@
-// Assignment Code
-// var generateBtn = document.querySelector('#generate');
-
-// Write password to the #password input
-// function generatePassword() {
-//   var midName = document.getElementById('#midName').value;
-//   var fPet = document.getElementById('#fPet').value;
-  
-//   console.log(midName);
-//   console.log(fPet);
-// }
-
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector('#password');
-
-//   passwordText.value = password;
-
-// }
-
 function generateRandomPassword() {
 
   var lowercase = 'abcdefghijklmnopqrstuvwxyz';
@@ -32,67 +12,77 @@ function generateRandomPassword() {
 
   var baseArray = [];
 
+  var checkboxes = document.getElementsByName('checklist[]');
+  var count = 0;
+
+  var length = document.getElementById('length').value;
+
+  var lengthNum = parseInt(length);
+  
+  for (var i = 0; i < checkboxes.length; i++) {
+
+    if (checkboxes[i].checked) {
+      count++;
+    }
+  }
+
+  if (lengthNum < 8 || lengthNum > 128 ) {
+    alert('Enter a number between 8 and 128');
+    return
+  }
+
+  if (count === 0) {
+    alert('Select at least one category.');
+    return
+  }
+
   if (document.getElementById('type1').checked === true) {
     var ranLower =[lowercaseChar[Math.floor(Math.random() * lowercaseChar.length)]];
 
-    for (i = 1; i < 10; i++) {
+    for (i = 1; i < lengthNum/count; i++) {
       var ranLowerCont = lowercaseChar[Math.floor(Math.random() * lowercaseChar.length)];
       var ranLowerArray = [ranLower,  ranLower.push(ranLowerCont)];
       
     }
-  
-    console.log(ranLowerArray);
   }
 
 
   if (document.getElementById('type2').checked === true) {
     var ranUpper =[uppercaseChar[Math.floor(Math.random() * uppercaseChar.length)]];
 
-    for (i = 1; i < 10; i++) {
+    for (i = 1; i < lengthNum/count; i++) {
       var ranUpperCont = uppercaseChar[Math.floor(Math.random() * uppercaseChar.length)];
       var ranUpperArray = [ranUpper,  ranUpper.push(ranUpperCont)];
       
     }
-    
-    console.log(ranUpperArray);
   }
 
   if (document.getElementById('type3').checked === true) {
     var ranDigit =[digitChar[Math.floor(Math.random() * digitChar.length)]];
 
-    for (i = 1; i < 10; i++) {
+    for (i = 1; i < lengthNum/count; i++) {
       var ranDigitCont = digitChar[Math.floor(Math.random() * digitChar.length)];
       var ranDigitArray = [ranDigit,  ranDigit.push(ranDigitCont)];
       
     }
-    
-    console.log(ranDigitArray);
   }
 
   if (document.getElementById('type4').checked === true) {
     var ranSpecial =[specialChar[Math.floor(Math.random() * specialChar.length)]];
 
-    for (i = 1; i < 10; i++) {
+    for (i = 1; i < lengthNum/count; i++) {
       var ranSpecialCont = specialChar[Math.floor(Math.random() * specialChar.length)];
       var ranSpecialArray = [ranSpecial,  ranSpecial.push(ranSpecialCont)];
       
     }
-    
-    console.log(ranSpecialArray);
   }
 
 
   var arrayComp = baseArray.concat(ranLowerArray, ranUpperArray, ranDigitArray, ranSpecialArray);
 
-  console.log(arrayComp);
-
   var arrayFlat = arrayComp.flat();
 
-  console.log(arrayFlat);
-
   var arrayFlatFix = arrayFlat.filter((el => typeof el === 'string'))
-
-  console.log(arrayFlatFix)
 
   var m = arrayFlatFix.length, t, i;
 
@@ -105,6 +95,10 @@ function generateRandomPassword() {
     arrayFlatFix[i] = t;
   }
 
+  while (arrayFlatFix.length > lengthNum) {
+    arrayFlatFix.pop();
+  }
+
   var password = arrayFlatFix.join('');
   var passwordText = document.querySelector('#password');
 
@@ -114,8 +108,6 @@ function generateRandomPassword() {
 }
 
 function openRandomQuery() {
-
-  console.log('Make a Random Password')
 
   var formArea = document.querySelector('#formAreaRandom')
 
@@ -139,7 +131,7 @@ function openRandomQuery() {
 
   var typeEnter1 = document.createElement('input');
   typeEnter1.type = 'checkbox';
-  typeEnter1.name = 'type1';
+  typeEnter1.name = 'checklist[]';
   typeEnter1.id = 'type1';
 
   var typePrompt2 = document.createElement('label');
@@ -148,7 +140,7 @@ function openRandomQuery() {
 
   var typeEnter2 = document.createElement('input');
   typeEnter2.type = 'checkbox';
-  typeEnter2.name = 'type2';
+  typeEnter2.name = 'checklist[]';
   typeEnter2.id = 'type2';
 
   var typePrompt3 = document.createElement('label');
@@ -157,7 +149,7 @@ function openRandomQuery() {
 
   var typeEnter3 = document.createElement('input');
   typeEnter3.type = 'checkbox';
-  typeEnter3.name = 'type3';
+  typeEnter3.name = 'checklist[]';
   typeEnter3.id = 'type3';
 
   var typePrompt4 = document.createElement('label');
@@ -166,7 +158,7 @@ function openRandomQuery() {
 
   var typeEnter4 = document.createElement('input');
   typeEnter4.type = 'checkbox';
-  typeEnter4.name = 'type4';
+  typeEnter4.name = 'checklist[]';
   typeEnter4.id = 'type4';
 
   var submit = document.createElement('input');
@@ -210,8 +202,6 @@ var generateMBtn = document.querySelector('#generateMnemonic');
 function generateMnemonicPassword(event) {
 
   event.preventDefault();
-
-  console.log("Make a mnemonic password");
 
   var formArea = document.querySelector('#formAreaMnemonic')
 
@@ -270,5 +260,3 @@ function generateMnemonicPassword(event) {
 }
 
 generateMBtn.addEventListener('click', generateMnemonicPassword);
-
-//Need a prevent default for my form
