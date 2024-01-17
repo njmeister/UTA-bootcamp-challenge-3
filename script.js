@@ -104,8 +104,13 @@ function generateRandomPassword() {
 
   passwordText.value = password;
 
+  console.log(arrayFlatFix.length);
+
   return;
 }
+
+
+
 
 function openRandomQuery() {
 
@@ -195,68 +200,3 @@ function openRandomQuery() {
 var generateRandom = document.querySelector('#generateRandom');
 
 generateRandom.addEventListener('click', openRandomQuery);
-
-
-var generateMBtn = document.querySelector('#generateMnemonic');
-
-function generateMnemonicPassword(event) {
-
-  event.preventDefault();
-
-  var formArea = document.querySelector('#formAreaMnemonic')
-
-  var form = document.createElement('form');
-  var header = document.createElement('h4')
-  header.textContent = 'Answer at least 6 questions:'
-
-  var midNamePrompt = document.createElement('label');
-  midNamePrompt.for = 'midName'
-  midNamePrompt.textContent = 'Your middle name:';
-
-  var midNameEnter = document.createElement('input');
-  midNameEnter.type = 'text';
-  midNameEnter.name = 'midName';
-  midNameEnter.id = 'midName'
-
-  var fPetPrompt = document.createElement('label');
-  fPetPrompt.for = 'fPet'
-  fPetPrompt.textContent = 'Your First Pet:';
-
-  var fPetEnter = document.createElement('input');
-  fPetEnter.type = 'text';
-  fPetEnter.name = 'fPet';
-  fPetEnter.id = 'fPet'
-
-  var mBirYearPrompt = document.createElement('label');
-  mBirYearPrompt.for = 'mBirYear'
-  mBirYearPrompt.textContent = "Your Mother's Birth Year:";
-
-  var mBirYearEnter = document.createElement('input');
-  mBirYearEnter.type = 'text';
-  mBirYearEnter.name = 'mBirYear';
-  mBirYearEnter.id = 'mBirYear'
- 
-
-  formArea.appendChild(header);
-  formArea.appendChild(form);
-  form.appendChild(midNamePrompt);
-  midNamePrompt.appendChild(midNameEnter);
-  form.appendChild(fPetPrompt);
-  fPetPrompt.appendChild(fPetEnter);
-  form.appendChild(mBirYearPrompt);
-  mBirYearPrompt.appendChild(mBirYearEnter);
-
-  var submit = document.createElement('input')
-  submit.type = 'submit';
-
-  form.appendChild(submit);
-
-  submit.addEventListener('click', submitAnswer)
-
-  function submitAnswer(event) {
-
-  }
-
-}
-
-generateMBtn.addEventListener('click', generateMnemonicPassword);
