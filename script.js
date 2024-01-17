@@ -104,6 +104,8 @@ function generateRandomPassword() {
 
   passwordText.value = password;
 
+  console.log(arrayFlatFix.length);
+
   return;
 }
 
@@ -198,104 +200,3 @@ function openRandomQuery() {
 var generateRandom = document.querySelector('#generateRandom');
 
 generateRandom.addEventListener('click', openRandomQuery);
-
-
-// var generateMnemonic = document.querySelector('#generateMnemonic');
-
-function generateMnemonicPassword() {
-
-  var inputList = document.getElementsByName('checklist[]');
-  var count = 0
-
-  for (var i = 0; i < inputList.length; i++) {
-
-    if (inputList[i].value != '' ) {
-      count++;
-    }
-  }
-
-  // if (count < 6) {
-  //   alert('Answer at least 6 prompts.');
-  //   return;
-  // }
-
-  console.log(count);
-
-  var midName = document.getElementById('midName').value;
-  var fPet = document.getElementById('fPet').value;
-
-  var baseArray = [];
-
-  if (midName != '') {
-    baseArray.push(midName);
-  }
-
-  if (fPet != '') {
-    baseArray.push(fPet);
-  }
-
-  console.log(baseArray);
-
-
-}
-
-function openMnemonicQuery() {
-
-  var formArea = document.querySelector('#formAreaMnemonic')
-
-  var form = document.createElement('form');
-  var header = document.createElement('h4')
-  header.textContent = 'Answer at least 6 questions:'
-
-  var midNamePrompt = document.createElement('label');
-  midNamePrompt.for = 'midName'
-  midNamePrompt.textContent = 'Your middle name:';
-
-  var midNameEnter = document.createElement('input');
-  midNameEnter.type = 'text';
-  midNameEnter.name = 'checklist[]';
-  midNameEnter.id = 'midName'
-
-  var fPetPrompt = document.createElement('label');
-  fPetPrompt.for = 'fPet'
-  fPetPrompt.textContent = 'Your First Pet:';
-
-  var fPetEnter = document.createElement('input');
-  fPetEnter.type = 'text';
-  fPetEnter.name = 'checklist[]';
-  fPetEnter.id = 'fPet'
-
-  var mBirYearPrompt = document.createElement('label');
-  mBirYearPrompt.for = 'mBirYear'
-  mBirYearPrompt.textContent = "Your Mother's Birth Year:";
-
-  var mBirYearEnter = document.createElement('input');
-  mBirYearEnter.type = 'text';
-  mBirYearEnter.name = 'checklist[]';
-  mBirYearEnter.id = 'mBirYear'
- 
-
-  formArea.appendChild(header);
-  formArea.appendChild(form);
-  form.appendChild(midNamePrompt);
-  midNamePrompt.appendChild(midNameEnter);
-  form.appendChild(fPetPrompt);
-  fPetPrompt.appendChild(fPetEnter);
-  form.appendChild(mBirYearPrompt);
-  mBirYearPrompt.appendChild(mBirYearEnter);
-
-  var submit = document.createElement('input')
-  submit.type = 'submit';
-
-  form.appendChild(submit);
-
-  submit.addEventListener('click', function(event) {
-    event.preventDefault()
-  });
-
-  submit.addEventListener('click', generateMnemonicPassword);
-}
-
-var generateMnemonic = document.querySelector('#generateMnemonic');
-
-generateMnemonic.addEventListener('click', openMnemonicQuery);
