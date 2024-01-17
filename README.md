@@ -27,7 +27,7 @@ The program then outputs a string of the inputted length made of the specified c
 ## Credits
 
 The code to shuffle the characters (lines 87-96) comes from 
-<link href="https://bost.ocks.org/mike/shuffle/">Mike Bostock's Fisher-Yates Shuffle code.</linkk>
+<a href="https://bost.ocks.org/mike/shuffle/">Mike Bostock's Fisher-Yates Shuffle code.</a>
 
 
 ## License
