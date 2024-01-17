@@ -6,7 +6,7 @@ This is my submission for the third challenge in the UTA/EdX Coding Bootcamp. Th
 The website prompts you to choose a number of characters between 8 and 128 and asks which character types to include from the list of Lowercase Letters, Uppercase Letters, Digits, and Special Characters.
 The program then outputs a string of the inputted length made of the specified character types selected.
 
-<img src="./Screenshot"/>
+<img src="./Screenshot.png"/>
 
 <a href="https://njmeister.github.io/UTA-bootcamp-challenge-3/">Link</a>
 
